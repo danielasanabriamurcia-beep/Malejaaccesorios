@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Maleja Accesorios</title>
+
+  <!-- Fuentes e iconos -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body { font-family: "Poppins", sans-serif; }
+
+    /* 🌟 Animación del logo */
+    @keyframes fadeBounce {
+      0% { opacity: 0; transform: scale(0.5) translateY(-30px); }
+      60% { opacity: 1; transform: scale(1.05) translateY(10px); }
+      100% { transform: scale(1) translateY(0); }
+    }
+
+    .logo-animado {
+      animation: fadeBounce 1.8s ease-out;
+    }
+  </style>
+</head>
+
+<body class="bg-[#f5f4f3] min-h-screen flex flex-col items-center p-6">
+
+ <!-- 🔹 ENCABEZADO RESPONSIVE -->
+<header class="fixed top-0 left-0 w-full bg-[#f9f9f9] z-50">
+  <div class="max-w-6xl mx-auto flex flex-col px-6">
+    <nav class="flex justify-between items-center mb-2 py-2">
+      <!-- Logo -->
+      <div class="flex items-center space-x-2 w-40 transition-transform transform hover:scale-110">
+        <img src="LOGO TEXTO.svg" alt="Logo Maleja Accesorios"
+             class="w-[180px] h-[90px] object-contain logo-animado"/>
+      </div>
+
+      <!-- Botón menú móvil -->
+      <button id="menu-btn" class="md:hidden text-[#1a1a1a] text-2xl focus:outline-none">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Enlaces de navegación -->
+      <ul id="menu" class="hidden md:flex space-x-8 text-[14px] text-[#1a1a1a] font-normal">
+        <li><a href="#inicio" class="font-extrabold text-black hover:underline">INICIO</a></li>
+        <li><a href="#sobre-nosotros" class="hover:underline">SOBRE<br>NOSOTROS</a></li>
+        <li><a href="#testimonios" class="hover:underline">TESTIMONIOS</a></li>
+        <li><a href="#tienda" class="hover:underline">TIENDA</a></li>
+        <li><a href="#contacto" class="hover:underline">CONTACTO</a></li>
+      </ul>
+    </nav>
+
+    <hr class="border-t border-[#3a2f2f] mb-4"/>
+  </div>
+</header>
+
+<!-- 🔹 Espaciado para evitar que el contenido quede oculto -->
+<div class="pt-[120px]"></div>
+
+<!-- 🔹 MENÚ MÓVIL (solo visible al tocar el botón) -->
+<div id="mobile-menu" class="hidden md:hidden bg-[#f9f9f9] border-t border-gray-300">
+  <a href="#inicio" class="block px-6 py-3 text-[#1a1a1a] hover:bg-gray-100">INICIO</a>
+  <a href="#sobre-nosotros" class="block px-6 py-3 text-[#1a1a1a] hover:bg-gray-100">SOBRE NOSOTROS</a>
+  <a href="#testimonios" class="block px-6 py-3 text-[#1a1a1a] hover:bg-gray-100">TESTIMONIOS</a>
+  <a href="#tienda" class="block px-6 py-3 text-[#1a1a1a] hover:bg-gray-100">TIENDA</a>
+  <a href="#contacto" class="block px-6 py-3 text-[#1a1a1a] hover:bg-gray-100">CONTACTO</a>
+</div>
+
+<!-- 🔹 Script del menú -->
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+
+<!-- Font Awesome (icono del menú) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+
+
+  <!-- 🔹 CONTENIDO PRINCIPAL -->
+  <main class="w-full max-w-6xl flex flex-col space-y-6">
+
+    <!-- 🌅 INICIO / CARRUSEL -->
+    <section id="inicio" class="relative w-full h-[500px] overflow-hidden rounded-lg shadow-md">
+      <div id="carousel" class="flex transition-transform duration-700 ease-in-out">
+        <img src="collagemodelos (2).png" class="w-full h-[500px] object-cover flex-shrink-0" alt="Accesorio 1">
+        <img src="fotodeinicio.svg" class="w-full h-[500px] object-cover flex-shrink-0" alt="Accesorio 2">
+        <img src="collage.png" class="w-full h-[500px] object-cover flex-shrink-0" alt="Accesorio 3">
+      </div>
+
+      <!-- Botones -->
+      <button onclick="prevSlide()" class="absolute top-1/2 left-5 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full">❮</button>
+      <button onclick="nextSlide()" class="absolute top-1/2 right-5 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full">❯</button>
+    </section>
+
+    <script>
+      const carousel = document.getElementById("carousel");
+      const totalSlides = carousel.children.length;
+      let index = 0;
+      function showSlide(i){ index = (i + totalSlides) % totalSlides; carousel.style.transform = `translateX(-${index * 100}%)`; }
+      function nextSlide(){ showSlide(index + 1); }
+      function prevSlide(){ showSlide(index - 1); }
+      setInterval(nextSlide, 5000);
+    </script>
+
+    <!-- 🌸 PRESENTACIÓN -->
+    <section class="flex flex-col md:flex-row md:space-x-6 mt-6">
+      <div class="md:w-1/2 text-[16px] text-[#1a1a1a] leading-relaxed mb-6 md:mb-0">
+        Accesorios de la mejor calidad, a precios excelentes y justo lo que buscas.
+        <strong>Maleja Accesorios</strong> ofrece los productos más virales con los precios más accesibles.
+        ¡Haz tu pedido ya!
+        <a href="https://wa.me/573058703470?text=Hola%20quiero%20hacer%20un%20pedido%20de%20accesorios" target="_blank">
+          <button class="ml-7 mt-6 bg-black text-white rounded-full px-8 py-2 text-[18px] tracking-widest hover:bg-gray-600 transition-transform hover:scale-110">COMPRA YA</button>
+        </a>
+      </div>
+
+      <div class="md:w-1/2 flex space-x-4 justify-center md:justify-start">
+        <img src="COLLAR.jpeg" class="w-[150px] h-[150px] object-cover rounded-lg" alt="">
+        <img src="collar conchas.avif" class="w-[150px] h-[150px] object-cover rounded-lg" alt="">
+        <img src="COLLAR 2.jpeg" class="w-[150px] h-[150px] object-cover rounded-lg" alt="">
+      </div>
+    </section>
+
+    <!-- 💬 TESTIMONIOS -->
+    <section id="testimonios" class="bg-white py-16 rounded-lg shadow-sm">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center mb-12 text-black">
+          A nuestros clientes les encanta la experiencia <br> con Maleja Accesorios
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div class="bg-black text-white rounded-2xl p-8 shadow-lg hover:scale-105 transition-transform">
+            <img src="lauris.jpeg" class="w-20 h-20 mx-auto rounded-full mb-4 object-cover border-4 border-white shadow-md" alt="">
+            <h3 class="font-semibold text-lg mb-2">Juana Molina</h3>
+            <p class="text-sm text-gray-200">"He comprado varias veces y siempre quedo feliz. La atención, la calidad y el diseño son impecables."</p>
+          </div>
+
+          <div class="bg-black text-white rounded-2xl p-8 shadow-lg hover:scale-105 transition-transform">
+            <img src="lauris2.jpeg" class="w-20 h-20 mx-auto rounded-full mb-4 object-cover border-4 border-white shadow-md" alt="">
+            <h3 class="font-semibold text-lg mb-2">Eva Negrete</h3>
+            <p class="text-sm text-gray-200">"Me encantan porque combinan elegancia con frescura. Son accesorios que puedo usar tanto en mi día a día como en ocasiones especiales."</p>
+          </div>
+
+          <div class="bg-black text-white rounded-2xl p-8 shadow-lg hover:scale-105 transition-transform">
+            <img src="lauris3.jpeg" class="w-20 h-20 mx-auto rounded-full mb-4 object-cover border-4 border-white shadow-md" alt="">
+            <h3 class="font-semibold text-lg mb-2">Laura Jimenez</h3>
+            <p class="text-sm text-gray-200">"Lo que más me gusta de Maleja es que cada pieza refleja mi estilo sin necesidad de exagerar. Es elegancia en lo sencillo."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🌴 SOBRE NOSOTROS -->
+    <section id="sobre-nosotros" class="bg-white py-16 rounded-lg shadow-sm">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center mb-12">Sobre Nosotros</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+          <div class="bg-white p-6 shadow rounded-lg flex flex-col items-center justify-center hover:shadow-lg transition">
+            <img src="malejita2.jpeg" alt="Accesorios Maleja" class="rounded-lg object-cover w-full h-80">
+            <h3 class="mt-4 font-semibold text-xl text-gray-800">Nuestro Estilo</h3>
+            <p class="mt-2 text-gray-600 text-sm text-center">
+              Inspirados en el mar y la naturaleza, vendemos piezas únicas que reflejan frescura, naturalidad y elegancia.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 shadow rounded-lg flex flex-col justify-center hover:shadow-lg transition">
+            <h3 class="font-semibold text-xl text-gray-800 mb-2">Nuestra Historia</h3>
+            <p class="text-gray-600 text-sm">
+              En <strong>Maleja Accesorios</strong> nos dedicamos a ofrecer productos de alta calidad que reflejan las últimas tendencias. 
+              Nacimos en la costa, con la misión de transmitir la esencia del mar en cada accesorio.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 shadow rounded-lg flex flex-col justify-center hover:shadow-lg transition">
+            <h3 class="font-semibold text-xl text-gray-800 mb-2">Nuestro Compromiso</h3>
+            <p class="text-gray-600 text-sm">
+              Brindar accesorios únicos que complementen tu personalidad. 
+              Cada pieza está hecha con dedicación y detalle, pensada para acompañarte en cada momento.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 shadow rounded-lg flex flex-col items-center justify-center hover:shadow-lg transition">
+            <img src="malejita1.jpeg" alt="Modelo Maleja Accesorios" class="rounded-lg object-cover w-full h-80">
+            <h3 class="mt-4 font-semibold text-xl text-gray-800">Pensado para Ti</h3>
+            <p class="mt-2 text-gray-600 text-sm text-center">
+              Accesorios que se adaptan a tu estilo, resaltando lo mejor de ti con un toque marino y elegante.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🛍️ TIENDA -->
+    <section id="tienda" class="border-t border-gray-300 pt-16 mt-8">
+      <h2 class="text-2xl font-bold text-center mb-7">Tienda</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="bg-white border rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="fotito de producto.jpeg" alt="Ganchos de flor" class="w-full h-56 object-cover">
+          <div class="p-4"><h3 class="font-bold text-lg">Ganchos de flor</h3><p class="text-gray-600 text-sm">Ganchos que resaltan la belleza de tu cabello</p></div>
+        </div>
+
+        <div class="bg-white border rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="fotito de producto 2.jpeg" alt="Pulseras" class="w-full h-56 object-cover">
+          <div class="p-4"><h3 class="font-bold text-lg">Pulseras</h3><p class="text-gray-600 text-sm">Detalles únicos inspirados en el mar</p></div>
+        </div>
+
+        <div class="bg-white border rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="COLLAR.jpeg" alt="Collares" class="w-full h-56 object-cover">
+          <div class="p-4"><h3 class="font-bold text-lg">Collares</h3><p class="text-gray-600 text-sm">Con detalles de estrella de mar y conchas</p></div>
+        </div>
+
+        <div class="bg-white border rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="fotito de producto 3.jpeg" alt="Aretes" class="w-full h-56 object-cover">
+          <div class="p-4"><h3 class="font-bold text-lg">Aretes</h3><p class="text-gray-600 text-sm">Aretes para deslumbrar</p></div>
+        </div>
+      </div>
+
+      <div class="flex justify-center mt-10">
+        <a href="catalogo.pdf" target="_blank" download>
+          <button class="bg-black text-white px-6 py-3 rounded-full text-[18px] tracking-widest hover:bg-gray-600 transition-transform hover:scale-110">CATÁLOGO</button>
+        </a>
+      </div>
+    </section>
+
+    <!-- 📞 CONTACTO -->
+    <section id="contacto" class="bg-gray-100 py-16 rounded-lg shadow-sm mt-12">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-6">Contáctanos</h2>
+        <p class="text-gray-600 mb-10">¿Tienes alguna pregunta o quieres un accesorio personalizado? Escríbenos y te responderemos lo más pronto posible. ✨</p>
+
+        <form action="mailto:danielasanabriamurcia@gmail.com" method="POST" enctype="text/plain" class="space-y-4 bg-white p-6 rounded-lg shadow-md">
+          <input type="text" name="nombre" placeholder="Tu nombre" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+          <input type="email" name="email" placeholder="Tu correo" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+          <textarea name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none"></textarea>
+          <button class="bg-black text-white px-6 py-3 rounded-full text-[18px] tracking-widest hover:bg-gray-600 transition-transform hover:scale-110">Enviar</button>
+        </form>
+
+        <div class="mt-12">
+          <h3 class="text-xl font-semibold mb-4">Síguenos en redes</h3>
+          <div class="flex justify-center space-x-6 text-3xl">
+            <a href="https://instagram.com/maleja__acc" target="_blank" class="text-pink-500 hover:text-pink-600 hover:scale-110 transition-transform"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com/malejaaccesorios" target="_blank" class="text-black hover:scale-110 transition-transform"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/573227883102" target="_blank" class="text-green-500 hover:text-green-600 hover:scale-110 transition-transform"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
